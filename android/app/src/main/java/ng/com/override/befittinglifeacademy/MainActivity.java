@@ -1,4 +1,4 @@
-package ng.com.override.befittinglife;
+package ng.com.override.befittinglifeacademy;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

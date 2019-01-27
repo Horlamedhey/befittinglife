@@ -19,58 +19,57 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Theme.of(context).platform == TargetPlatform.android
-        ? MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: this.title,
-            home: SafeArea(
-                child: WebviewScaffold(
-              enableAppScheme: true,
-              hidden: true,
-              withLocalUrl: true,
-              url: this.url,
-              withJavascript: true,
-              withLocalStorage: true,
-              withZoom: false,
-              allowFileURLs: true,
-              appCacheEnabled: true,
-              appBar: AppBar(
-                actions: <Widget>[
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      flutterWebViewPlugin.goBack();
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.autorenew,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      flutterWebViewPlugin.reload();
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      flutterWebViewPlugin.goForward();
-                    },
-                  ),
-                ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: this.title,
+      home: SafeArea(
+          child: WebviewScaffold(
+        enableAppScheme: true,
+        hidden: true,
+        withLocalUrl: true,
+        url: this.url,
+        withJavascript: true,
+        withLocalStorage: true,
+        withZoom: false,
+        allowFileURLs: true,
+        appCacheEnabled: true,
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
               ),
-              bottomNavigationBar: BottomAppBar(
-                color: this.themeData.primaryColor,
-                child: Container(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
+              onPressed: () {
+                flutterWebViewPlugin.goBack();
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.autorenew,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                flutterWebViewPlugin.reload();
+              },
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                flutterWebViewPlugin.goForward();
+              },
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomAppBar(
+          color: this.themeData.primaryColor,
+          child: Container(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
 //                    IconButton(
 //                      icon: const Icon(Icons.arrow_back_ios),
 //                      onPressed: () {
@@ -89,97 +88,65 @@ class MyApp extends StatelessWidget {
 //                        flutterWebViewPlugin.reload();
 //                      },
 //                    ),
-                    FlatButton(
-                      child: IntrinsicHeight(
-                          child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.home,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            'Home',
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      )),
-                      onPressed: () {
-                        flutterWebViewPlugin.reloadUrl(url);
-                      },
+              FlatButton(
+                child: IntrinsicHeight(
+                    child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.home,
+                      color: Colors.white,
                     ),
-                    FlatButton(
-                      child: IntrinsicHeight(
-                          child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.dashboard,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            'Profile',
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      )),
-                      onPressed: () {
-                        flutterWebViewPlugin.reloadUrl(url + '/myaccount');
-                      },
-                    ),
-                    FlatButton(
-                      child: IntrinsicHeight(
-                          child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.comment,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            'Blog',
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      )),
-                      onPressed: () {
-                        flutterWebViewPlugin.reloadUrl(url + '/blog');
-                      },
-                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    )
                   ],
                 )),
+                onPressed: () {
+                  flutterWebViewPlugin.reloadUrl(url);
+                },
               ),
-            )),
-            theme: this.themeData,
-          )
-        : CupertinoApp(
-            debugShowCheckedModeBanner: false,
-            title: this.title,
-            home: SafeArea(
-              child: WebviewScaffold(
-                hidden: true,
-                bottomNavigationBar: Theme(
-                  data: Theme.of(context)
-                      .copyWith(canvasColor: Color(0xFF02BB9F)),
-                  child: BottomNavigationBar(items: [
-                    BottomNavigationBarItem(
-                      icon: new Icon(Icons.home),
-                      title: new Text('Home'),
+              FlatButton(
+                child: IntrinsicHeight(
+                    child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.dashboard,
+                      color: Colors.white,
                     ),
-                    BottomNavigationBarItem(
-                      icon: new Icon(Icons.person),
-                      title: new Text('Signup/Login'),
-                    ),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.person), title: Text('Dashboard')),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.insert_comment), title: Text('Blog'))
-                  ]),
-                ),
-                url: this.url,
-                withJavascript: true,
-                withLocalStorage: true,
-                withZoom: false,
-                allowFileURLs: true,
-                appCacheEnabled: true,
+                    Text(
+                      'Profile',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                )),
+                onPressed: () {
+                  flutterWebViewPlugin.reloadUrl(url + '/myaccount');
+                },
               ),
-            ));
+              FlatButton(
+                child: IntrinsicHeight(
+                    child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.comment,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      'Blog',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                )),
+                onPressed: () {
+                  flutterWebViewPlugin.reloadUrl(url + '/blog');
+                },
+              ),
+            ],
+          )),
+        ),
+      )),
+      theme: this.themeData,
+    );
   }
 }
